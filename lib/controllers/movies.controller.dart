@@ -1,9 +1,10 @@
 import 'dart:convert';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import '../models/movies.model.dart';
 
 class MovieController {
-  final String apiKey = '4b3dd54';
+  final String apiKey = dotenv.env['API_KEY'] ?? '';
 
   Future<List<Movie>> searchMovies(String query) async {
     try {
