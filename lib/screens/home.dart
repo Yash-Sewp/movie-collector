@@ -94,6 +94,11 @@ class HomeScreen extends StatelessWidget {
                           ),
                           title: Text(movie.title),
                           subtitle: Text('${movie.year} - ${movie.type}'),
+                          trailing: const Icon(
+                            Icons.arrow_forward_ios, // Icon for the arrow
+                            size: 20,
+                            color: Colors.black, // You can change the color if needed
+                          ),
                           onTap: () {
                             // Navigate to MovieDetailsScreen and pass the movie's ID
                             Navigator.push(

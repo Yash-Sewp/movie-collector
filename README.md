@@ -1,16 +1,61 @@
-# movie_collector_app
+# Movie Collector App
 
-A new Flutter project.
+## Overview
+The Movie Collector App is a Flutter-based application that allows users to search for movies, view detailed information, and save favorite films for later reference. The app leverages the [OMDb API](http://www.omdbapi.com/) to fetch movie data, including titles, ratings, plot summaries, and more. This project uses the **Bloc pattern** to manage state and ensure smooth, reactive UI updates.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### Instructions to Run the App
 
-A few resources to get you started if this is your first Flutter project:
+1. **Clone the Repository:**
+    ```bash
+    git clone https://github.com/Yash-Sewp/movie-collector
+    cd movie_collector_app
+    ```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+2. **Set up API key:**
+    - Create a `.env` file in the root directory.
+    - Add your OMDb API key to the `.env` file:
+      ```bash
+      API_KEY=your_omdb_api_key
+      ```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+3. **Install Dependencies:**
+    ```bash
+    flutter pub get
+    ```
+
+4. **Unit Testing:**
+   Run unit tests to ensure everything is working:
+    ```bash
+    flutter test
+    ```
+
+5. **Run Application:**
+   Launch the app on your preferred device/emulator:
+    ```bash
+    flutter run
+    ```
+
+## Third-Party Packages
+
+This project uses the following third-party packages:
+
+- **flutter_bloc**: For state management using the Bloc pattern.
+- **http**: To make API requests to the OMDb API and fetch movie data.
+- **flutter_dotenv**: For securely storing and accessing environment variables like the API key.
+- **mocktail**: For writing unit tests with mock objects, especially useful for testing the Bloc logic.
+- **bloc_test**: For writing unit tests for Bloc components and ensuring state management works as expected.
+
+## Assumptions
+
+- The app assumes that the user has a valid **OMDb API key**, as this is required to fetch movie data.
+- The **Bloc pattern** was chosen for state management to separate business logic from the UI, making the app more scalable and testable.
+
+## Potential Improvements
+
+- **Favorites & Watchlist**: Enable users to save their favorite movies and build a watchlist for future viewing.
+- **User Authentication**: Allow users to create accounts and store data to the cloud for a personalized experience.
+- **Enhanced Search**: Add advanced filtering options, such as by genre, release year, or rating, to improve search functionality.
+
+---

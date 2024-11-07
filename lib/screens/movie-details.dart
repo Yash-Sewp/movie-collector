@@ -13,7 +13,6 @@ class MovieDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(movieId);
     return BlocProvider(
       create: (context) =>
           MovieBloc(MovieController())..add(FetchMovieDetails(movieId)),
