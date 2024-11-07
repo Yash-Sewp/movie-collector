@@ -42,8 +42,5 @@ node_modules/
 # Coverage
 coverage/
 
-# Testing
-test/
-
 # Environment
 .env
