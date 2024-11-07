@@ -1,39 +1,46 @@
-### IntelliJ IDEA ###
-out/
-!**/src/main/**/out/
-!**/src/test/**/out/
-
-### Eclipse ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
-
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-
-### VS Code ###
-.vscode/
-
-### Mac OS ###
-.DS_Store
-
-# Flutter/Dart/Pub related
-**/doc/api/
-**/ios/Flutter/.last_build_id
+# Flutter/Dart specific
 .dart_tool/
 .flutter-plugins
 .flutter-plugins-dependencies
+.packages
 .pub-cache/
 .pub/
-/build/
+build/
+
+# IntelliJ/Android Studio specific
+.idea/
+*.iml
+*.ipr
+*.iws
+android/.gradle/
+android/app/debug/
+android/app/prod/
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/Generated.xcconfig
+ios/Runner.xcworkspace
+ios/Runner/Debug-iphoneos
+ios/Runner/Release-iphoneos
+
+# macOS-specific
+.DS_Store
+
+# Visual Studio Code specific
+.vscode/
+
+# Firebase
+firebase_app_id_file.json
+
+# Node.js
+node_modules/
+
+# Log files
+*.log
+
+# Coverage
+coverage/
+
+# Testing
+test/

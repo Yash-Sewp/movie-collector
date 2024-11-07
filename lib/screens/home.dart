@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../blocs/movies.bloc.dart';
+import 'movie-details.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // TextController to manage TextField state
     final TextEditingController controller = TextEditingController();
 
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(100.0),
+        preferredSize: const Size.fromHeight(90.0),
         child: AppBar(
+          centerTitle: false,
           title: const Padding(
-            padding: EdgeInsets.only(top: 30.0),
+            padding: const EdgeInsets.only(top: 30), // Adjust vertical padding as needed
             child: Text(
               'Search Movie',
               style: TextStyle(
@@ -25,8 +26,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ),
-          backgroundColor: Colors.red,
-          iconTheme: const IconThemeData(color: Colors.white),
+          backgroundColor: Colors.red
         ),
       ),
       body: Container(
@@ -47,7 +47,6 @@ class HomeScreen extends StatelessWidget {
                       if (query.isNotEmpty) {
                         context.read<MovieBloc>().add(SearchMovies(query));
                       } else {
-                        // Display a Snackbar if the query is empty
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
                             content: Padding(
@@ -89,12 +88,21 @@ class HomeScreen extends StatelessWidget {
                         return ListTile(
                           leading: Image.network(
                             movie.poster.isNotEmpty && movie.poster != 'N/A' ? movie.poster : 'https://dummyimage.com/600x400/000/fff',
-                            width: 100,  // Set a fixed width
-                            height: 150,  // You can also set a fixed height if needed
-                            fit: BoxFit.cover,  // Ensures the image covers the space without distorting it
+                            width: 100,
+                            height: 150,
+                            fit: BoxFit.cover,
                           ),
                           title: Text(movie.title),
                           subtitle: Text('${movie.year} - ${movie.type}'),
+                          onTap: () {
+                            // Navigate to MovieDetailsScreen and pass the movie's ID
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MovieDetailsScreen(movieId: movie.imdbID, title: movie.title),
+                              ),
+                            );
+                          },
                         );
                       },
                     );

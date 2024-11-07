@@ -17,7 +17,6 @@ class MovieController {
         if (data['Search'] != null && data['Search'] is List) {
           return (data['Search'] as List).map((movie) => Movie.fromJson(movie)).toList();
         } else {
-          // If no results found, return an empty list
           return [];
         }
       } else {
@@ -27,6 +26,27 @@ class MovieController {
       // Print any error that occurs
       print("Error occurred: $e");
       throw Exception('Error occurred while fetching movies');
+    }
+  }
+
+  Future<Movie> getMovieByIMDB(String id) async {
+    try {
+      final response = await http.get(Uri.parse('http://www.omdbapi.com/?i=$id&apikey=$apiKey'));
+
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+
+        if (data is Map<String, dynamic> && data.isNotEmpty) {
+          return Movie.fromJson(data);
+        } else {
+          throw Exception('Movie not found.');
+        }
+      } else {
+        throw Exception('Failed to load movie. Status Code: ${response.statusCode}');
+      }
+    } catch (e) {
+      print("Error occurred: $e");
+      throw Exception('Error occurred while fetching movie details');
     }
   }
 }
